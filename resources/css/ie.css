@@ -1,0 +1,12 @@
+.title-detail #detailMode {
+	vertical-align: middle;
+}
+.title-detail .last input {
+	margin-top: -3px;
+}
+.tmnick_shadowed {
+	color: #666 !important;
+}
+.options-radio-inline li .name {
+	width: 127px;
+}

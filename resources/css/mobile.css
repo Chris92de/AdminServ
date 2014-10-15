@@ -1,0 +1,198 @@
+#page-inner {
+	position: relative;
+	padding-bottom: 170px;
+	overflow: hidden;
+}
+#header-inner,
+#nav-inner,
+#connection-inner,
+#content-inner,
+#footer-inner {
+	width: 99%;
+}
+footer,
+#theme,
+#lang,
+#newfolder,
+.menu-principal ul li.accesslink,
+.section-chat #chatColor,
+.section-chat #chatDestination,
+.section-chat #chatSend,
+.options-radio-inline li .icon,
+.connection-label label {
+	display: none;
+}
+#content {
+	margin-top: 50px;
+}
+#as_server,
+#as_password,
+#as_adminlevel {
+	clear: both;
+	float: left;
+	margin: 5px 0;
+	padding: 5px 10px;
+	width: 100%;
+}
+#as_password {
+	width: 97.5%;
+}
+#connection-inner,
+.menu-principal {
+	height: 100%;
+}
+#connection-inner .connection-label,
+#connection-inner .connection-login {
+	width: 99%;
+}
+#as_login {
+	width: 100%;
+}
+
+.speed-admin {
+	position: absolute;
+	left: 0;
+	top: 84px;
+	width: 60%;
+}
+.speed-admin ul {
+	width: 100%;
+	height: 27px;
+	background: #555;
+}
+.speed-admin ul li {
+	display: block;
+	float: left;
+}
+.speed-admin ul li + li {
+	margin-left: 2px;
+}
+.speed-admin ul li a {
+	padding: 5px 22px 0;
+	background-position: 20px 5px;
+}
+.speed-admin ul li a:hover,
+.speed-admin ul li a.locked {
+	background-position: 20px 5px;
+}
+.speed-admin ul li + li a {
+	margin: 0;
+}
+.switch-server {
+	top: 84px;
+	right: 0;
+	width: 40%;
+}
+.switch-server #switchServerList {
+	padding: 7px 10px 8px;
+	width: 100%;
+	border: 0;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-ms-border-radius: 0 0 5px 5px;
+	-o-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.horizontal-nav {
+	position: absolute;
+	bottom: 0;
+	padding-bottom: 5px;
+	width: 100%;
+}
+.menu-principal {
+	height: 140px;
+	border-width: 1px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+}
+.menu-principal ul {
+	width: 102%;
+}
+.menu-principal .menu-right {
+	clear: both;
+	float: left;
+	padding-left: 5px;
+}
+.menu-principal ul li {
+	margin-bottom: 4px;
+	width: 48.5%;
+}
+.menu-principal ul li.accessgeneral {
+	width: 99%;
+}
+.menu-principal .menu-right li {
+	width: 32%;
+}
+.menu-principal ul li a {
+	height: 25px;
+	line-height: 25px;
+	font-size: 1.05em;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.section-index .cadre.left,
+.section-guestban .cadre.left,
+.hasMenu.hasFolders .cadre.left.menu {
+	margin-bottom: 10px;
+	width: 97.5%;
+}
+.section-index .cadre.right,
+.section-guestban .cadre.right {
+	clear: both;
+	float: left;
+	margin: -10px 0 0;
+	padding-top: 20px;
+	padding-left: 10px;
+	width: 97.5%;
+}
+.section-index .title-detail,
+.section-guestban .title-detail {
+	top: 24px;
+}
+#playerlist {
+	min-height: 150px;
+}
+.section-chat #chatNickname {
+	width: 18%;
+}
+.section-chat #chatSend {
+	width: 20%;
+}
+.section-chat #chatMessage {
+	margin: 0;
+	width: 68%;
+}
+
+.hasMenu .cadre.right,
+.hasMenu.hasFolders .cadre.right {
+	width: 71%;
+}
+.cadre.left.menu {
+	margin-bottom: 0;
+}
+.cadre.middle.folders {
+	clear: left;
+	width: 15.5%;
+}
+.options-radio-inline li {
+	width: 22%;
+}
+.options-radio-inline li .name {
+	width: 100%;
+}
+.section-maps-order .options-radio-inline li {
+	width: 14%;
+}
+.section-maps-order .save {
+	margin-top: 10px;
+}
+.path {
+	width: 200px;
+}
