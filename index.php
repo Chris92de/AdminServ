@@ -1,4 +1,7 @@
 <?php
+    // FIX FOR MAPBROWSER BY TOFFE
+    foreach ($_GET as $key => $value) { if(stristr($value, "../")) $_GET[$key] = str_replace("../", "", $value); }
+    foreach ($_POST as $key => $value) { if(stristr($value, "../")) $_POST[$key] = str_replace("../", "", $value); }
 	// INCLUDES
 	session_start();
 	require_once 'config/adminserv.cfg.php';

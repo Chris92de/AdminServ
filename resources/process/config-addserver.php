@@ -2,6 +2,7 @@
 	// ENREGISTREMENT
 	if( isset($_POST['saveserver']) ){
 		// Variables
+        $displayServPassword = trim($_POST['addDisplayServPassword']);
 		$serverName = Str::replaceSpecialChars( htmlspecialchars(addslashes($_POST['addServerName'])), false);
 		$serverAddress = trim($_POST['addServerAddress']);
 		$serverPort = intval($_POST['addServerPort']);
@@ -27,7 +28,8 @@
 			'port' => $serverPort,
 			'mapsbasepath' => $serverMapsBasePath,
 			'matchsettings' => $serverMatchSet,
-			'adminlevel' => array()
+			'adminlevel' => array(),
+            'ds_pw' => $displayServPassword
 		);
 		foreach($serverAdmLvl as $admLvlId => $admLvlValue){
 			$serverData['adminlevel'][$admLvlId] = $admLvlValue;
@@ -71,7 +73,8 @@
 			'SuperAdmin' => 'all',
 			'Admin' => 'all',
 			'User' => 'all'
-		)
+		),
+        'ds_pw' => 'User'
 	);
 	if($args['id'] !== -1){
 		define('IS_SERVER_EDITION', true);
@@ -80,6 +83,7 @@
 			$serverData = AdminServServerConfig::getServer($data['name']);
 			$data['address'] = $serverData['address'];
 			$data['port'] = $serverData['port'];
+            $data['ds_pw'] = $serverData['ds_pw'];
 			$data['mapsbasepath'] = (isset($serverData['mapsbasepath'])) ? $serverData['mapsbasepath'] : '';
 			$data['matchsettings'] = $serverData['matchsettings'];
 			foreach($serverData['adminlevel'] as $admLvlId => $admLvlValue){

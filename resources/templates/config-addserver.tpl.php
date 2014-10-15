@@ -32,6 +32,15 @@
 							<?php echo Utils::t('Port for remote control'); ?>
 						</td>
 					</tr>
+                    <tr>
+                        <td class="key"><label for="addDisplayServPassword"><?php echo Utils::t('DisplayServ Password'); ?></label></td>
+                        <td class="value">
+                            <input class="text width3" type="text" name="addDisplayServPassword" id="addDisplayServPassword" value="<?php echo $data['ds_pw']; ?>" />
+                        </td>
+                        <td class="info">
+                            <?php echo Utils::t('User password from dedicated config'); ?>
+                        </td>
+                    </tr>
 				</table>
 			</fieldset>
 			
