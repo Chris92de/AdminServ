@@ -139,7 +139,7 @@ class AdminServServerConfig {
 		$out = "\t\t'".$serverData['name']."' => array(\n"
 			."\t\t\t'address'\t\t=> '".$serverData['address']."',\n"
 			."\t\t\t'port'\t\t\t=> ".$serverData['port'].",\n"
-            ."\t\t\t'ds_pw'\t\t\t=> ".$serverData['ds_pw'].",\n"
+            ."\t\t\t'ds_pw'\t\t\t=> '".$serverData['ds_pw']."',\n"
 			."\t\t\t'mapsbasepath'\t=> '".$serverData['mapsbasepath']."',\n"
 			."\t\t\t'matchsettings'\t=> '".$serverData['matchsettings']."',\n"
 			."\t\t\t'adminlevel'\t=> array(";
