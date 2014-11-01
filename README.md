@@ -1,12 +1,12 @@
-AdminServ
+AdminServ [DEVELOPMENT BRANCH]
 =========
 
 WebInterface to manage Trackmania Forever and ManiaPlanet dedicated servers.
 
 ######Introduction
-Welcome to the new home of AdminServ.
-The original author of this awesome piece of work - kev717 - gave me [permission](http://forum.maniaplanet.com/viewtopic.php?p=231516#p231516) to continue updating this project.
-Feel free to submit pull requests, issues or feature requests.
+This is the development branch of AdminServ.
+It's in active development, please do not use this version on production servers, as it may contain bugs, security issues and may cause instabilities on your system.
+By actively using this development branch, you agree that the maintainers of this project can't be held responsible for any damage caused, e.g. your dog may eat your homework. 
 
 
 ######About AdminServ
@@ -25,10 +25,8 @@ Inspired by remoteCP and similar endeavours, AdminServ is a web interface which 
 - A web server
 - PHP 5.3+
 - A dedicated TMForever/ManiaPlanet server
+- [Optional] ManiaPlanet web services account for OAuth implementation
 
-######How-to install
-- Download the [latest release](https://github.com/Chris92de/AdminServ/releases)
-- Unpack it on your webserver
-- Navigate to wherever you placed it in your browser
-- Done! You're ready to configure everything in your browser
-- (optional) Add the location of your TMForever/ManiaPlanet server to the allowed open_basedir directories in your php.ini
+######Installation
+Check the INSTALL.md file in the downloaded archive for further details.
+This version is incompatible with the v2.x.x branch, please do a fresh install as upgrades may not work as expected.
