@@ -1,6 +1,6 @@
 <?php
 define('ADMINSERV_TIMER', false);
-define('ADMINSERV_VERSION', '3.0.0-DEV_r1');
+define('ADMINSERV_VERSION', '3.0.0-DEV_r2');
 
 /**
 * Classe pour le fonctionnement d'AdminServ
@@ -144,6 +144,11 @@ class AdminServ {
 			define('SERVER_MATCHSET', ServerConfig::$SERVERS[SERVER_NAME]['matchsettings']);
 			define('SERVER_MAPS_BASEPATH', (isset(ServerConfig::$SERVERS[SERVER_NAME]['mapsbasepath'])) ? ServerConfig::$SERVERS[SERVER_NAME]['mapsbasepath'] : '');
 			define('SERVER_ADMINLEVEL', serialize( ServerConfig::$SERVERS[SERVER_NAME]['adminlevel']) );
+			define('SERVER_SERVER_CONTROLLER_NAME', ServerConfig::$SERVERS[SERVER_NAME]['server_controller_name']);
+			define('SERVER_SERVER_CONTROLLER_MYSQL_HOST', ServerConfig::$SERVERS[SERVER_NAME]['server_controller_mysql_host']);
+			define('SERVER_SERVER_CONTROLLER_MYSQL_USER', ServerConfig::$SERVERS[SERVER_NAME]['server_controller_mysql_user']);
+			define('SERVER_SERVER_CONTROLLER_MYSQL_PASS', ServerConfig::$SERVERS[SERVER_NAME]['server_controller_mysql_pass']);
+			define('SERVER_SERVER_CONTROLLER_MYSQL_DB', ServerConfig::$SERVERS[SERVER_NAME]['server_controller_mysql_db']);
 			
 			// CONNEXION
 			$client = new IXR_ClientMulticall_Gbx;
@@ -1314,8 +1319,17 @@ class AdminServ {
 			$client->query($queryName['mapIndex']);
 			$out['cid'] = $client->getResponse();
 			
-			if( $countMapList > 0 ){
+if( $countMapList > 0 ){
 				$i = 0;
+				
+				//Niarfman Karma research - DB Connection
+				$db = new mysqli(SERVER_SERVER_CONTROLLER_MYSQL_HOST, SERVER_SERVER_CONTROLLER_MYSQL_USER, SERVER_SERVER_CONTROLLER_MYSQL_PASS, SERVER_SERVER_CONTROLLER_MYSQL_DB);
+
+				$IsDBConnect=false;
+				if($db->connect_errno == 0){
+					$IsDBConnect=true;
+				}					
+				
 				foreach($mapList as $map){
 					// Name
 					$name = htmlspecialchars($map['Name'], ENT_QUOTES, 'UTF-8');
@@ -1326,12 +1340,49 @@ class AdminServ {
 					if($env == 'Speed'){ $env = 'Desert'; }else if($env == 'Alpine'){ $env = 'Snow'; }
 					$out['lst'][$i]['Environment'] = $env;
 					
+					//Niarfman Karma research
+					switch(SERVER_SERVER_CONTROLLER_NAME){
+						case 'ManiaControl':
+							$sql = 'SELECT name, AVG(vote) AS avg_vote, COUNT(name) AS nb_votes FROM `mc_karma` INNER JOIN `mc_maps`  ON `mc_maps`.`index` = `mc_karma`.`mapIndex` GROUP BY `mc_maps`.`uid` HAVING `mc_maps`.`uid`="'.$map['UId'].'"';
+							break;
+						case 'Xaseco':
+							$sql = 'SELECT Name, AVG(Score) AS avg_vote, COUNT(name) AS nb_votes FROM `rs_karma` INNER JOIN `maps`  ON `maps`.`Id` = `rs_karma`.`MapId` GROUP BY `maps`.`Uid` HAVING `maps`.`Uid`="'.$map['UId'].'"';
+							break;
+						case 'None':
+							$sql='None';
+					}
+					
+					if($sql == NULL){
+						$karma="Invalid server_controller_name";
+					}
+					elseif($sql == 'None'){
+						$karma="-";
+					}
+					elseif($IsDBConnect){
+						$result = $db->query($sql);
+						
+						$row = $result->fetch_assoc();
+						if($row <> NULL)
+							{
+								$karma=round($row['avg_vote']*100,2) . '% - ' .$row['nb_votes'] .' vote(s)';
+							}
+							else
+							{
+								$karma="No Vote";
+							}
+							$result->free();
+					}
+					else{
+						$karma="No Database Set";
+					}
+
 					// Autres
 					$out['lst'][$i]['UId'] = $map['UId'];
 					$out['lst'][$i]['FileName'] = $map['FileName'];
 					$out['lst'][$i]['Author'] = $map['Author'];
 					$out['lst'][$i]['GoldTime'] = TimeDate::format($map['GoldTime']);
 					$out['lst'][$i]['CopperPrice'] = $map['CopperPrice'];
+					$out['lst'][$i]['karma']=$karma;
 					if(SERVER_VERSION_NAME == 'ManiaPlanet'){
 						$out['lst'][$i]['Type']['Name'] = self::formatScriptName($map['MapType']);
 						$out['lst'][$i]['Type']['FullName'] = $map['MapType'];
@@ -1340,6 +1391,7 @@ class AdminServ {
 					}
 					$i++;
 				}
+				$db->close();				
 			}
 			
 			// Nombre de maps

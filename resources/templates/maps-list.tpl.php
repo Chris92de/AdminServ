@@ -21,6 +21,7 @@
 				<thead>
 					<tr>
 						<th class="thleft"><?php echo Utils::t('Map'); ?></th>
+						<th>Local Karma</th>
 						<th><?php echo Utils::t('Environment'); ?></th>
 						<th><?php echo Utils::t('Author'); ?></th>
 						<th class="detailModeTh"<?php if (USER_MODE_MAPS == 'simple'): echo ' hidden="hidden"'; endif; ?>><?php echo Utils::t('Gold time'); ?></th>
@@ -41,6 +42,7 @@
 										<span class="detailModeTd"><?php echo $map['UId']; ?></span>
 									<?php endif; ?>
 								</td>
+								<td><?php echo $map['karma']; ?> </td>
 								<td class="imgcenter"><img src="<?php echo AdminServConfig::$PATH_RESOURCES; ?>images/env/<?php echo strtolower($map['Environment']); ?>.png" alt="" /><?php echo $map['Environment']; ?></td>
 								<td><?php echo $map['Author']; ?></td>
 								<td<?php if (USER_MODE_MAPS == 'simple'): echo ' hidden="hidden"'; endif; ?>><?php echo $map['GoldTime']; ?></td>

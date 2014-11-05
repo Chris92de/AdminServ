@@ -11,6 +11,11 @@ class ServerConfig {
             'matchsettings'	=> 'MatchSettings/',
             'adminlevel'	=> array('SuperAdmin' => 'all', 'Admin' => 'all', 'User' => 'all'),
             'ds_pw'         => 'User'
+			'server_controller_name'		=> 'None', //Select value between ManiaControl, MPAseco, Xaseco
+			'server_controller_mysql_host'	=> 'localhost',
+			'server_controller_mysql_user'	=> 'db_user',
+			'server_controller_mysql_pass'	=> 'db_pass',
+			'server_controller_mysql_db'	=> 'db_name'
         ),
         */
     );

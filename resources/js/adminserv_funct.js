@@ -169,6 +169,7 @@ function getCurrentServerInfo(mode, sort){
 			if(data.map != null){
 				$('#map_name').html(data.map.name);
 				$('#map_author').html(data.map.author);
+				$('#map_karma').html(data.map.karma);
 				$('#map_enviro').html(data.map.enviro+'<img src="'+path_ressources+'images/env/'+data.map.enviro.toLowerCase()+'.png" alt="" />');
 				$('#map_uid').html(data.map.uid);
 				if(data.srv.gameModeScriptName){
@@ -571,6 +572,7 @@ function getMapList(mode, sort){
 									out += '<span class="detailModeTd">'+map.UId+'</span>';
 								}
 							out += '</td>'
+							+'<td>'+map.karma+'</td>'
 							+'<td class="imgcenter"><img src="'+path_ressources+'images/env/'+map.Environment.toLowerCase()+'.png" alt="" />'+map.Environment+'</td>'
 							+'<td>'+map.Author+'</td>';
 							if(mode == 'detail'){

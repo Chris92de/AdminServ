@@ -13,6 +13,8 @@
 		);
 	}
 	
+	$redirect=false;
+	
 	// ACTIONS
 	if( isset($_POST['removeMap']) && isset($_POST['map']) && count($_POST['map']) > 0 ){
 		if( !$client->query($queries['removeMap'], $_POST['map']) ){
@@ -20,7 +22,7 @@
 		}
 		else{
 			AdminServLogs::add('action', 'Remove map ('.count($_POST['map']).')');
-			Utils::redirection(false, '?p='.USER_PAGE);
+			$redirect=true;
 		}
 	}
 	else if( isset($_POST['chooseNextMap']) && isset($_POST['map']) && count($_POST['map']) > 0 ){
@@ -29,8 +31,19 @@
 		}
 		else{
 			AdminServLogs::add('action', 'Choose next map ('.count($_POST['map']).')');
-			Utils::redirection(false, '?p='.USER_PAGE);
+			$redirect=true;
 		}
+	}
+	
+	//Niarfman - Save MatchSettings
+	if( isset($_POST['SaveCurrentMatchSettings']) && array_key_exists('SaveCurrentMatchSettings', $_POST) ){
+		if( !$client->query('SaveMatchSettings', $data['mapsDirectoryPath'] . SERVER_MATCHSET) ){
+			AdminServ::error();
+		}
+	}
+	
+	if ($redirect){
+		Utils::redirection(false, '?p='.USER_PAGE);
 	}
 	
 	// MAPLIST

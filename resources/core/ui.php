@@ -347,36 +347,42 @@ class AdminServUI {
 		
 		return $out;
 	}
-	
+
 	
 	/**
-	* Récupère la liste des serveurs configurés
+	* Niarfman - Get current Server Id
+	*
+	* @return string
+	*/
+	public static function getCurrentServerId(){
+		$out = null;
+		
+		if( isset($_GET['server']) && $_GET['server'] != null ){
+			$currentServerId = intval($_GET['server']);
+			}
+			else{
+				$currentServerId = Utils::readCookieData('adminserv', 0);
+			}
+		return $currentServerId;
+	}
+	
+		
+	
+	/**
+	* Niarfman - Get Server List
 	*
 	* @return string
 	*/
 	public static function getServerList(){
 		$out = null;
+		$ServerList=array();
 		
-		if( class_exists('ServerConfig') && AdminServServerConfig::hasServer() ){
-			if( isset($_GET['server']) && $_GET['server'] != null ){
-				$currentServerId = intval($_GET['server']);
-			}
-			else{
-				$currentServerId = Utils::readCookieData('adminserv', 0);
-			}
-			
-			foreach(ServerConfig::$SERVERS as $server => $values){
-				$selected = (AdminServServerConfig::getServerId($server) == $currentServerId) ? ' selected="selected"' : null;
-				$out .= '<option value="'.$server.'"'.$selected.'>'.$server.'</option>';
-			}
-		}
-		else{
-			$out = '<option value="null">'.Utils::t('No server available').'</option>';
+		foreach(ServerConfig::$SERVERS as $server => $values){
+			$ServerList[]=$server;
 		}
 		
-		return $out;
+		return $ServerList;
 	}
-	
 	
 	/**
 	* Récupère la liste des modes de jeu
