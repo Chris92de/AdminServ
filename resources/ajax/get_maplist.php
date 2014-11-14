@@ -39,6 +39,9 @@
 				$sql = 'SELECT name, AVG(vote) AS avg_vote, COUNT(name) AS nb_votes FROM `mc_karma` INNER JOIN `mc_maps`  ON `mc_maps`.`index` = `mc_karma`.`mapIndex` GROUP BY `mc_maps`.`uid` HAVING `mc_maps`.`uid`="'.$map['UId'].'"';
 				break;
 			case 'Xaseco':
+				$sql = 'SELECT Name, AVG(Score) AS avg_vote, COUNT(name) AS nb_votes FROM `rs_karma` INNER JOIN `challenges`  ON `challenges`.`Id` = `rs_karma`.`ChallengeId` GROUP BY `challenges`.`Uid` HAVING `challenges`.`Uid`="'.$map['UId'].'"';
+				break;
+			case 'Xaseco2':
 				$sql = 'SELECT Name, AVG(Score) AS avg_vote, COUNT(name) AS nb_votes FROM `rs_karma` INNER JOIN `maps`  ON `maps`.`Id` = `rs_karma`.`MapId` GROUP BY `maps`.`Uid` HAVING `maps`.`Uid`="'.$map['UId'].'"';
 				break;
 			case 'None':
@@ -53,18 +56,22 @@
 		}
 		elseif($IsDBConnect){
 			$result = $db->query($sql);
-			
-			$row = $result->fetch_assoc();
-			if($row <> NULL)
-			{
-				
-				$out['lst'][$key]['karma']=round($row['avg_vote']*100,2) . '% - ' .$row['nb_votes'] .' vote(s)';
-			}
-			else
-			{
-				$out['lst'][$key]['karma']="No Vote";
-			}
+			if($result <> NULL){
+				$row = $result->fetch_assoc();
+				if($row <> NULL)
+				{
+					
+					$out['lst'][$key]['karma']=round($row['avg_vote']*100,2) . '% - ' .$row['nb_votes'] .' vote(s)';
+				}
+				else
+				{
+					$out['lst'][$key]['karma']="No Vote";
+				}
 			$result->free();
+			}
+			else{
+				$karma="Bad Ctrl query";
+			}
 		}
 		else{
 			$karma="No Database Set";
