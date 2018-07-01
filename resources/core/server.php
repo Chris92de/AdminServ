@@ -148,7 +148,7 @@ class AdminServServerConfig {
 			foreach($serverData['adminlevel'] as $admLvlId => $admLvlValue){
 				$out .= "'$admLvlId' => ";
 				if( is_array($serverData['adminlevel'][$admLvlId]) ){
-					$out .= "array('".implode("', '", str_replace(' ', '', $serverData['adminlevel'][$admLvlId]))."')";
+					$out .= "'".implode("', '", str_replace(' ', '', $serverData['adminlevel'][$admLvlId]))."'";
 				}
 				else{
 					$out .= "'".$serverData['adminlevel'][$admLvlId]."'";
