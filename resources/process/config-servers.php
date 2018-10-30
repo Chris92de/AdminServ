@@ -21,7 +21,7 @@
 				'Admin' => $getServerData['adminlevel']['Admin'],
 				'User' => $getServerData['adminlevel']['User'],
 			),
-			'ds_pw' => trim($getServerData['ds_pw']
+			'ds_pw' => trim($getServerData['ds_pw'])
 		);
 		if( AdminServServerConfig::saveServerConfig($setServerData) ){
 			$action = Utils::t('This server has been duplicated.');
