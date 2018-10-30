@@ -232,10 +232,10 @@ abstract class TimeDate {
 		$secondCount = floor($timeDifference / $second);
 		$timeDifference -= $secondCount * $second;
 		
-		$strDay = $dayCount.'j'; if($fullText){ $strDay .= 'our'; if($dayCount > 1){ $strDay .= 's'; } }
-		$strHour = $hourCount.'h'; if($fullText){ $strHour .= 'eure'; if($hourCount > 1){ $strHour .= 's'; } }
-		$strMinute = $minuteCount.'min'; if($fullText){ $strMinute .= 'ute'; if($minuteCount > 1){ $strMinute .= 's'; } }
-		$strSecond = $secondCount.'sec'; if($fullText){ $strSecond .= 'onde'; if($secondCount > 1){ $strSecond .= 's'; } }
+		$strDay = $dayCount.'d'; if($fullText){ $strDay .= 'day'; if($dayCount > 1){ $strDay .= 's'; } }
+		$strHour = $hourCount.'h'; if($fullText){ $strHour .= 'hour'; if($hourCount > 1){ $strHour .= 's'; } }
+		$strMinute = $minuteCount.'min'; if($fullText){ $strMinute .= 'minute'; if($minuteCount > 1){ $strMinute .= 's'; } }
+		$strSecond = $secondCount.'sec'; if($fullText){ $strSecond .= 'second'; if($secondCount > 1){ $strSecond .= 's'; } }
 		
 		if($dayCount != 0){
 			$out .= $strDay.', '.$strHour.' '.$strMinute.' '.$strSecond;
