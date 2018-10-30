@@ -9,7 +9,7 @@ abstract class TimeDate {
 	* @param string $lang      -> La langue de la date retournée
 	* @return string
 	*/
-	public static function date($format, $timestamp = null, $lang = 'fr'){
+	public static function date($format, $timestamp = null, $lang = 'en'){
 		if($timestamp === null){
 			$timestamp = time();
 		}
