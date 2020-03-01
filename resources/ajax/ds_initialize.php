@@ -1,20 +1,26 @@
 <?php
 	// ISSET
 	if( isset($_GET['cfg']) ){ $path_cfg = $_GET['cfg']; }else{ $path_cfg = null; }
-	
-	
+
 	// INCLUDES
 	require_once '../class/utils.class.php';
-	$serverConfig = '../../'.$path_cfg;
-	if( file_exists($serverConfig) ){
-		require_once $serverConfig;
-	}
+
+    if(preg_match('/\.cfg\.php$/', $path_cfg)){
+        $serverConfig = '../../'.str_replace('../', '', $path_cfg);
+        if(file_exists($serverConfig)){
+            require_once $serverConfig;
+        }
+    }else{
+        header("HTTP/1.1 400 Bad Request");
+        die("Specified file is not a config.");
+    }
+
 	$langCode = Utils::getLang();
 	$langFile = '../lang/'.$langCode.'.php';
 	if( file_exists($langFile) ){
 		require_once $langFile;
 	}
-	
+
 	// DATA
 	$out = array();
 	if( class_exists('ServerConfig') ){
