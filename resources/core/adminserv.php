@@ -63,6 +63,9 @@ class AdminServ {
 		if($text === null){
 			$text = '['.$client->getErrorCode().'] '.Utils::t( $client->getErrorMessage() );
 		}
+		else {
+			$text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+		}
 		
 		AdminServLogs::add('error', $text);
 		unset($_SESSION['info']);
