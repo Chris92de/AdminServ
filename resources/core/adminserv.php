@@ -72,7 +72,7 @@ class AdminServ {
 		$_SESSION['error'] = $text;
 	}
 	public static function info($text){
-		$_SESSION['info'] = $text;
+		$_SESSION['info'] = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 	}
 	
 	
