@@ -26,7 +26,18 @@ Inspired by remoteCP and similar endeavours, AdminServ is a web interface which 
 - PHP 5.3+
 - A dedicated TMForever/ManiaPlanet server
 
-######How-to install
+######Run via Docker
+Either run directly in Docker
+```
+docker build -t admin-serv .
+docker run -d -p 8080:80 admin-serv
+```
+or via docker-compose:
+```
+docker-compose up -d
+```
+
+######Run on an existing web-server
 - Download the [latest release](https://github.com/Chris92de/AdminServ/releases)
 - Unpack it on your webserver
 - Navigate to wherever you placed it in your browser
