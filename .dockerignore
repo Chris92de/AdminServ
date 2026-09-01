@@ -1,0 +1,12 @@
+old/
+node_modules/
+vendor/
+.phpunit.cache/
+.git/
+.gitignore
+*.log
+.env
+.env.*
+tests/
+.idea/
+.vscode/

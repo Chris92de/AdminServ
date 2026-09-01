@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* Custom scrollbars and styling for TrackMania formatted badges */
+.tm-text {
+  font-family: inherit;
+  display: inline;
+}
+
+.tm-text span {
+  display: inline;
+}

@@ -1,0 +1,25 @@
+services:
+  adminserv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adminserv
+    restart: unless-stopped
+    ports:
+      - "${ADMINSERV_PORT:-8080}:80"
+    environment:
+      - CONFIG_PASSWORD=${CONFIG_PASSWORD:-}
+      - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-256M}
+      - PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-25M}
+      - PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-30M}
+      - PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-60}
+    volumes:
+      # Persistent configuration file
+      - ./config:/var/www/html/config
+      # Persistent application logs
+      - ./logs:/var/www/html/logs
+      # Dedicated Server Maps directory mounts (e.g. /servers/{SERVER_NAME}/Maps)
+      # - ./servers:/servers
+      # Or mount individual dedicated servers:
+      # - /path/to/tm2020_server/UserData/Maps:/servers/tm2020/Maps
+      # - /path/to/tmnf_server/GameData/Tracks/Challenges:/servers/tmnf/Maps

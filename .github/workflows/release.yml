@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    name: Build & Package Standalone Release Archive
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Build Frontend Bundle
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: curl, json, simplexml, gd, zip
+          coverage: none
+
+      - name: Install Production Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-progress
+
+      - name: Package Standalone Distribution Zip
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          ZIP_NAME="adminserv-${TAG_NAME}.zip"
+          mkdir -p release-build
+          cp -r index.php .htaccess src config docker-compose.yml Dockerfile docker-entrypoint.sh .env.example README.md vendor public release-build/
+          cd release-build && zip -r "../${ZIP_NAME}" ./* && cd ..
+          echo "ZIP_PATH=${ZIP_NAME}" >> $GITHUB_ENV
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_PATH }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

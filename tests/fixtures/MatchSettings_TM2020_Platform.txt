@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<script_name>Trackmania/TM_Platform_Online</script_name>
+		<comment></comment>
+	</gameinfos>
+
+	<filter>
+		<random_map_order>0</random_map_order>
+	</filter>
+
+	<mode_script_settings>
+		<setting name="S_ChatTime" type="integer" value="15"/> <!-- Default : 10 -->
+		<!-- Default : <setting name="S_UseClublinks" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_UseClublinksSponsors" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_NeutralEmblemUrl" type="text" value=""/> -->
+		<!-- Default : <setting name="S_ScriptEnvironment" type="text" value="production"/> -->
+		<!-- Default : <setting name="S_IsChannelServer" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_DelayBeforeNextMap" type="integer" value="2000"/> -->
+		<!-- Default : <setting name="S_RespawnBehaviour" type="integer" value="0"/> -->
+		<!-- Default : <setting name="S_ForceLapsNb" type="integer" value="-1"/> -->
+		<!-- Default : <setting name="S_InfiniteLaps" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_EnableJoinLeaveNotifications" type="boolean" value="1"/> -->
+		<!-- Default : <setting name="S_SeasonIds" type="text" value=""/> -->
+		<!-- Default : <setting name="S_IsSplitScreen" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_WhoAmIUrl" type="text" value="/api/club/room/:ServerLogin/whoami"/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_Checkpoint" type="text" value=""/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_DecalSponsor4x1" type="text" value=""/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_Screen16x9" type="text" value=""/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_Screen8x1" type="text" value=""/> -->
+		<!-- Default : <setting name="S_DecoImageUrl_Screen16x1" type="text" value=""/> -->
+		<!-- Default : <setting name="S_ClubId" type="integer" value="0"/> -->
+		<!-- Default : <setting name="S_ClubName" type="text" value=""/> -->
+		<!-- Default : <setting name="S_LoadingScreenImageUrl" type="text" value=""/> -->
+		<!-- Default : <setting name="S_TrustClientSimu" type="boolean" value="1"/> -->
+		<!-- Default : <setting name="S_UseCrudeExtrapolation" type="boolean" value="1"/> -->
+		<!-- Default : <setting name="S_SynchronizePlayersAtMapStart" type="boolean" value="1"/> -->
+		<!-- Default : <setting name="S_DisableGoToMap" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_PickAndBan_Enable" type="boolean" value="0"/> -->
+		<!-- Default : <setting name="S_PickAndBan_Style" type="text" value=""/> -->
+		<setting name="S_TimeLimit" type="integer" value="3600"/> <!-- Default : 300 -->
+		<setting name="S_WarmUpNb" type="integer" value="1"/> <!-- Default : 0 -->
+		<setting name="S_WarmUpDuration" type="integer" value="60"/> <!-- Default : 0 -->
+		<setting name="S_WarmUpTimeout" type="integer" value="0"/> <!-- Default : -1 -->
+	</mode_script_settings>
+
+	<startindex>0</startindex>
+	<map><file>Platform/Lemonpeaks.Map.Gbx</file></map>
+	<map><file>Platform/OrangeHills.Map.Gbx</file></map>
+	<map><file>Platform/PinkPlatform.Map.Gbx</file></map>
+	<map><file>Platform/Pipeline.Map.Gbx</file></map>
+	<map><file>Platform/Tangerine.Map.Gbx</file></map>
+</playlist>

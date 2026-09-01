@@ -1,0 +1,33 @@
+{
+  "name": "adminserv",
+  "version": "4.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/Chris92de/AdminServ#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chris92de/AdminServ.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chris92de/AdminServ/issues"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vendor/bin/phpunit"
+  },
+  "dependencies": {
+    "lucide-preact": "^1.16.0",
+    "preact": "^10.26.4"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "daisyui": "^5.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0"
+  }
+}

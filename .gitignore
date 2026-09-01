@@ -1,0 +1,38 @@
+# Legacy code directory (do not track)
+/old/
+old/
+
+# Dependencies
+/node_modules/
+node_modules/
+/vendor/
+vendor/
+
+# Build caches & outputs
+.phpunit.cache/
+dist/
+/public/assets/
+public/assets/
+/public/.vite/
+public/.vite/
+
+# Logs & Runtime
+/logs/*.log
+/logs/*
+!/logs/.gitkeep
+*.log
+
+# Environment & Local overrides
+.env
+.env.local
+.env.*.local
+/config/adminserv.php
+config/adminserv.php
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
